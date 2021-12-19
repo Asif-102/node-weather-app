@@ -1,4 +1,3 @@
-require('dotenv').config();
 const geoCode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
