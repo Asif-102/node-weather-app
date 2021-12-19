@@ -1,8 +1,6 @@
 require('dotenv').config();
-const request = require('request');
 const geoCode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
-
 
 geoCode('new york',(data)=>{
     console.log(data)
