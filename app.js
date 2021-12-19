@@ -2,7 +2,7 @@ require('dotenv').config();
 const geoCode = require('./utils/geocode');
 const forecast = require('./utils/forecast');
 
-geoCode('new york',(error, data)=>{
+geoCode('dhaka',(error, data)=>{
     console.log('Error', error)
     console.log('Data', data)
 })

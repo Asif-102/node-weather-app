@@ -3,9 +3,7 @@ const request = require('request')
 
 const geoCode = (address, callback) => {
 
-    if(address == ''){
-        address = 'none'
-    }
+    (address == '')?(address = 'fdsafksdfjlsdfjffdsjfasdf'):address
 
     const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+encodeURIComponent(address)+'.json?access_token='+process.env.MAP_BOX_API_KEY+'&limit=1'
 
