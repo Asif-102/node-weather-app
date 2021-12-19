@@ -7,10 +7,19 @@ const forecast = (latitude, longitude, callback) => {
 
     request({ url: url, json: true }, (error, response) => {
 
-        if (response.body.success === false) {
-            return callback(response.body.error.info);
+        // if (response.body.success === false) {
+        //     return callback(response.body.error.info);
+        // }
+        // return callback(`${response.body.current.weather_descriptions[0]} The temperature is ${response.body.current.temperature} degress out. It feels like ${response.body.current.feelslike} degrees out.`);
+        if(error){
+            callback('Unable to connect.', undefined)
+        }else if(response.body.error){
+            callback('Something went wrong.', undefined)
+        }else{
+            callback(undefined, {
+                temp_c: response.body.current.temperature
+            })
         }
-        return callback(`${response.body.current.weather_descriptions[0]} The temperature is ${response.body.current.temperature} degress out. It feels like ${response.body.current.feelslike} degrees out.`);
     })
 }
 
