@@ -1,6 +1,7 @@
+require('dotenv').config()
 const request = require('request');
 
-const weather_api_url = 'http://api.weatherstack.com/current?access_key=a64ee73e334fcf0808d769bd51b3be22&query=Dhaka&units=m&query=';
+const weather_api_url = 'http://api.weatherstack.com/current?access_key='+process.env.WEATHER_API_KEY+'&query=Dhaka&units=m&query=23.784506,90.403409';
 // 23.784506,90.403409
 request({ url: weather_api_url, json: true }, (error, response) => {
     // const data = JSON.parse(response.body);
@@ -21,7 +22,7 @@ const geoCode = (address, callback) => {
     if(address == ''){
         address = 'none'
     }
-    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+encodeURIComponent(address)+'.json?access_token=pk.eyJ1IjoieHBlcmltZW50MTI4IiwiYSI6ImNreGNha3FoODN6dDMycHA5Y3BnNmFzcmQifQ.mnxII1t4OFf68c39eB7rug&limit=1'
+    const url = 'https://api.mapbox.com/geocoding/v5/mapbox.places/'+encodeURIComponent(address)+'.json?access_token='+process.env.MAP_BOX_API_KEY+'&limit=1'
 
     request({ url: url, json: true }, (error, response) => {
         if (!response.body.features.length) {
